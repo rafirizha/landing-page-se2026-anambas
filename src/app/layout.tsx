@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Sosialisasi Sensus Ekonomi 2026",
   description:
     "Landing page informasi Sosialisasi Sensus Ekonomi 2026 BPS Kabupaten Kepulauan Anambas.",
+  icons: {
+    icon: "/favicon-32x32.png",
+  },
 };
 
 export default function RootLayout({
