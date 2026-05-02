@@ -4,7 +4,7 @@ type GoalCardProps = {
   accent: string;
   eyebrow: string;
   title: string;
-  details: string[];
+  details: readonly string[];
   icon: ReactNode;
 };
 
