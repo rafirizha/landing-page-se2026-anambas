@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 type FAQItem = {
   question: string;
@@ -14,9 +14,13 @@ type HeroNavProps = {
 
 export default function HeroNav({ faqItems }: HeroNavProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const openFaq = () => dialogRef.current?.showModal();
   const closeFaq = () => dialogRef.current?.close();
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const toggleMobileMenu = () =>
+    setIsMobileMenuOpen((current) => !current);
 
   return (
     <>
@@ -49,10 +53,13 @@ export default function HeroNav({ faqItems }: HeroNavProps) {
           </a>
         </div>
 
-        <div className="ml-auto dropdown dropdown-end md:hidden">
-          <label
-            tabIndex={0}
-            className="btn btn-circle border-none bg-[var(--brand)] text-white shadow-none hover:bg-[#cf6f1f] hover:text-white"
+        <div className="ml-auto md:hidden">
+          <button
+            type="button"
+            onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+            aria-label="Buka menu navigasi"
+            className="btn btn-square rounded-2xl border-[3px] border-[var(--foreground)]/70 bg-white shadow-none hover:border-[var(--foreground)] hover:bg-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,36 +67,42 @@ export default function HeroNav({ faqItems }: HeroNavProps) {
               viewBox="0 0 24 24"
               strokeWidth="1.8"
               stroke="currentColor"
-              className="h-5 w-5"
+              className="h-6 w-6 text-[var(--foreground)]"
               aria-hidden
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 6.75h15m-15 5.25h15m-15 5.25h15" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4.5 6.75h15m-15 5.25h15m-15 5.25h15"
+              />
             </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu dropdown-content z-30 mt-3 w-56 rounded-box bg-white p-2 shadow-none"
+          </button>
+        </div>
+      </div>
+
+      <div
+        className={`md:hidden ${isMobileMenuOpen ? "mt-4" : "hidden"}`}
+      >
+        <div className="grid gap-3 rounded-[1.75rem] bg-white/95 p-3 shadow-[0_12px_36px_rgba(17,24,39,0.06)]">
+          <button
+            type="button"
+            onClick={() => {
+              closeMobileMenu();
+              openFaq();
+            }}
+            className="w-full rounded-[1.4rem] bg-[#f7f8fb] px-4 py-4 text-base font-medium text-[var(--foreground)] transition hover:bg-[#f0f2f7]"
           >
-            <li>
-              <button
-                type="button"
-                onClick={openFaq}
-                className="rounded-xl text-sm font-medium text-[var(--brand-deep)] hover:bg-[rgba(227,127,42,0.12)] hover:text-[var(--brand)]"
-              >
-                FAQ Sensus
-              </button>
-            </li>
-            <li>
-              <a
-                href="https://sensus.bps.go.id"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-xl text-sm font-medium text-[var(--brand-deep)] hover:bg-[rgba(227,127,42,0.12)] hover:text-[var(--brand)]"
-              >
-                Lihat Data Sensus
-              </a>
-            </li>
-          </ul>
+            FAQ Sensus
+          </button>
+          <a
+            href="https://sensus.bps.go.id"
+            target="_blank"
+            rel="noreferrer"
+            onClick={closeMobileMenu}
+            className="w-full rounded-[1.4rem] bg-[#f7f8fb] px-4 py-4 text-center text-base font-medium text-[var(--foreground)] transition hover:bg-[#f0f2f7]"
+          >
+            Lihat Data Sensus
+          </a>
         </div>
       </div>
 
