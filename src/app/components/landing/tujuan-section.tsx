@@ -53,7 +53,7 @@ const goals = [
 const coverageCards = [
   {
     title: "Rumah Tangga",
-    description: "Pendataan keluarga yang memiliki aktivitas ekonomi.",
+    description: "Pendataan seluruh keluarga",
     icon: <HouseIcon />,
   },
   {
