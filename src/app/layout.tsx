@@ -7,12 +7,41 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? `https://${process.env.NEXT_PUBLIC_SITE_URL}`
+  : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Sosialisasi Sensus Ekonomi 2026",
   description:
     "Landing page informasi Sosialisasi Sensus Ekonomi 2026 BPS Kabupaten Kepulauan Anambas.",
   icons: {
     icon: "/favicon-32x32.png",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "Sosialisasi Sensus Ekonomi 2026",
+    description:
+      "Landing page informasi Sosialisasi Sensus Ekonomi 2026 BPS Kabupaten Kepulauan Anambas.",
+    images: [
+      {
+        url: "/og-se2026.png",
+        width: 1200,
+        height: 630,
+        alt: "Sosialisasi Sensus Ekonomi 2026 BPS Kabupaten Kepulauan Anambas",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sosialisasi Sensus Ekonomi 2026",
+    description:
+      "Landing page informasi Sosialisasi Sensus Ekonomi 2026 BPS Kabupaten Kepulauan Anambas.",
+    images: ["/og-se2026.png"],
   },
 };
 
