@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import CoverageTerm from "./coverage-term";
 
 type GoalCardProps = {
   accent: string;
@@ -271,13 +272,15 @@ export default function TujuanSection() {
                 Cakupan SE2026 dibagi menjadi rumah tangga dan usaha. Untuk
                 usaha, fokusnya mencakup UMKM serta usaha besar, sementara
                 kategori{" "}
-                <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
-                  P
-                </span>{" "}
+                <CoverageTerm
+                  term="P"
+                  description="Administrasi Pemerintahan, Pertahanan, dan Jaminan Sosial Wajib."
+                />{" "}
                 dan{" "}
-                <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
-                  U
-                </span>{" "}
+                <CoverageTerm
+                  term="U"
+                  description="Aktivitas Rumah Tangga sebagai Pemberi Kerja; Aktivitas yang Menghasilkan Barang Jasa oleh Rumah Tangga untuk Keperluan Sendiri yang Tidak Terdiferensiasi."
+                />{" "}
                 tidak termasuk.
               </p>
             </div>

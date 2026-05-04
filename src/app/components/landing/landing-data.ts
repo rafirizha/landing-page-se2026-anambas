@@ -15,19 +15,19 @@ export const schedule = [
   {
     phase: "Mei 2026",
     title: "Periode Pendataan Mandiri",
-    description: "Web based / CAWI",
+    description:
+      "Usaha besar mengisi kuesioner secara mandiri melalui web based (CAWI) agar proses pendataan lebih cepat dan efisien.",
   },
   {
-    phase: "Juni s.d. Juli 2026",
-    title: "Periode Kunjungan Petugas",
-    description: "Pendataan langsung oleh petugas di lapangan.",
-  },
-  {
-    phase: "Agustus 2026",
-    title: "Periode Data Cleaning dan Penyisiran",
-    description: "Pemeriksaan kelengkapan dan penyempurnaan data.",
+    phase: "Juni s.d. Agustus 2026",
+    title: "Periode Kunjungan Petugas (Door to Door)",
+    description:
+      "Petugas mendatangi rumah tangga dan pelaku usaha secara langsung dari rumah ke rumah atau tempat usaha (door to door).",
   },
 ];
+
+export const supportVideoUrl =
+  "https://www.youtube.com/results?search_query=Sensus+Ekonomi+2026+BPS+Kabupaten+Kepulauan+Anambas";
 
 export const benefits = [
   {

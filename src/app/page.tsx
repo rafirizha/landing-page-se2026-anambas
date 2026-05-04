@@ -1,6 +1,7 @@
 import HeroSection from "@/app/components/landing/hero-section";
 import DasarHukumSection from "@/app/components/landing/dasar-hukum-section";
 import KuesionerSection from "@/app/components/landing/kuesioner-section";
+import DukunganSection from "@/app/components/landing/dukungan-section";
 import ManfaatSection from "@/app/components/landing/manfaat-section";
 import PelaksanaanSection from "@/app/components/landing/pelaksanaan-section";
 import SiteFooter from "@/app/components/landing/site-footer";
@@ -18,6 +19,7 @@ export default function Home() {
         <DasarHukumSection />
         <KuesionerSection />
         <PelaksanaanSection />
+        <DukunganSection />
         <ManfaatSection />
       </main>
 
