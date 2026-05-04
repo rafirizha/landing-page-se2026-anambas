@@ -1,4 +1,16 @@
-import { supportVideoUrl } from "./landing-data";
+"use client";
+
+import { useState } from "react";
+
+import { supportLetters, supportVideos } from "./landing-data";
+
+type SupportMode = "video" | "surat";
+
+type SupportItem = {
+  title: string;
+  description: string;
+  href?: string;
+};
 
 function PlayIcon() {
   return (
@@ -36,7 +48,103 @@ function DocumentIcon() {
   );
 }
 
+function ArrowIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      className="h-4 w-4"
+      aria-hidden
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+    </svg>
+  );
+}
+
+function SupportCard({
+  item,
+  kind,
+}: {
+  item: SupportItem;
+  kind: SupportMode;
+}) {
+  const content = (
+    <>
+      <div
+        className={`relative overflow-hidden rounded-[1.5rem] p-5 text-white ${
+          kind === "video"
+            ? "bg-[linear-gradient(135deg,#111827_0%,#1f2937_55%,#e37f2a_100%)]"
+            : "bg-[linear-gradient(135deg,#e37f2a_0%,#f59e0b_100%)]"
+        }`}
+      >
+        <div
+          className="absolute -left-10 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl"
+          aria-hidden
+        />
+        <div
+          className="absolute -bottom-10 right-0 h-44 w-44 rounded-full bg-black/10 blur-3xl"
+          aria-hidden
+        />
+
+        <div className="relative z-10 flex items-center justify-between gap-3">
+          <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
+            {kind === "video" ? "YouTube" : "PDF"}
+          </span>
+          <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
+            {kind === "video" ? "Klik thumbnail" : "Buka dokumen"}
+          </span>
+        </div>
+
+        <div className="relative z-10 mt-8 flex items-center justify-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+            {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
+          </div>
+        </div>
+
+        <div className="relative z-10 mt-8">
+          <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-sm leading-7 text-white/86 sm:text-base">
+            {item.description}
+          </p>
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between gap-3 border-t border-[rgba(227,127,42,0.1)] px-5 py-4 text-sm">
+        <span className="text-[var(--muted)]">
+          {item.href ? "Tersedia untuk dibuka" : "Tautan belum diisi"}
+        </span>
+        <span className="inline-flex items-center gap-1 font-semibold text-[var(--brand)]">
+          {kind === "video" ? "Buka video" : "Buka PDF"} <ArrowIcon />
+        </span>
+      </div>
+    </>
+  );
+
+  if (item.href) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noreferrer"
+        className="group block overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,24,39,0.08)]"
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <article className="overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.05)]">{content}</article>;
+}
+
 export default function DukunganSection() {
+  const [activeTab, setActiveTab] = useState<SupportMode>("video");
+  const activeItems = activeTab === "video" ? supportVideos : supportLetters;
+
   return (
     <section
       id="dukungan"
@@ -48,101 +156,47 @@ export default function DukunganSection() {
             Dukungan
           </div>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
-            Video dukungan dan surat penguat sosialisasi
+            Video dukungan dan surat edaran
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base">
-            Dua bentuk dukungan ini dipilih agar pesan sosialisasi lebih mudah
-            dibagikan, lebih kredibel, dan tetap hemat hosting.
+            Navigasi dipisah agar 3 video dan 3 surat edaran tetap rapi,
+            mudah dipindahkan, dan enak dibuka dari HP maupun desktop.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <a
-            href={supportVideoUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="group block rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,247,239,0.92))] p-4 shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,24,39,0.08)] sm:p-5"
-          >
-            <div className="relative overflow-hidden rounded-[1.6rem] bg-[linear-gradient(135deg,#111827_0%,#1f2937_55%,#e37f2a_100%)] p-6 text-white">
-              <div
-                className="absolute -left-10 top-0 h-48 w-48 rounded-full bg-white/10 blur-3xl"
-                aria-hidden
-              />
-              <div
-                className="absolute -bottom-10 right-0 h-56 w-56 rounded-full bg-black/10 blur-3xl"
-                aria-hidden
-              />
+        <div className="mx-auto mt-10 flex w-full max-w-2xl gap-3 rounded-full bg-[#f8f4ef] p-2 shadow-[inset_0_1px_0_rgba(17,24,39,0.03)]">
+          {(
+            [
+              { key: "video", label: "Video Dukungan", count: supportVideos.length },
+              { key: "surat", label: "Surat Edaran", count: supportLetters.length },
+            ] as const
+          ).map((tab) => (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => setActiveTab(tab.key)}
+              className={`flex-1 rounded-full px-4 py-3 text-sm font-semibold transition sm:text-base ${
+                activeTab === tab.key
+                  ? "bg-[var(--brand)] text-white shadow-[0_10px_24px_rgba(227,127,42,0.2)]"
+                  : "text-[var(--foreground)] hover:bg-white/80"
+              }`}
+            >
+              <span className="block">{tab.label}</span>
+              <span className="block text-xs font-medium opacity-75">
+                {tab.count} item
+              </span>
+            </button>
+          ))}
+        </div>
 
-              <div className="relative z-10 flex items-center justify-between">
-                <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em]">
-                  YouTube
-                </span>
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
-                  Klik thumbnail
-                </span>
-              </div>
-
-              <div className="relative z-10 mt-8 flex items-center justify-center">
-                <div className="flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm transition group-hover:scale-105">
-                  <PlayIcon />
-                </div>
-              </div>
-
-              <div className="relative z-10 mt-8">
-                <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-                  Video Dukungan
-                </h3>
-                <p className="mt-2 max-w-xl text-sm leading-7 text-white/86 sm:text-base">
-                  Thumbnail ini membuka video dukungan di YouTube agar
-                  sosialisasi tetap ringan untuk web hosting, tapi tetap mudah
-                  dibagikan ke publik.
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <article className="rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white p-5 shadow-[0_18px_50px_rgba(17,24,39,0.05)] sm:p-6">
-            <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-[var(--brand)] ring-1 ring-[rgba(227,127,42,0.12)]">
-                <DocumentIcon />
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--brand)]">
-                  Surat Dukungan
-                </p>
-                <h3 className="mt-1 text-xl font-semibold tracking-tight text-[var(--foreground)] sm:text-2xl">
-                  Penguat resmi untuk sosialisasi
-                </h3>
-              </div>
-            </div>
-
-            <p className="mt-5 text-sm leading-7 text-[var(--muted)] sm:text-base">
-              Surat dukungan diposisikan sebagai ruang untuk dokumen resmi yang
-              memperkuat pesan sosialisasi dan bisa ditautkan ketika file PDF
-              final sudah siap.
-            </p>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] bg-[#fff8f0] p-4">
-                <p className="text-sm font-semibold text-[var(--foreground)]">
-                  Fungsinya
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-                  Menjadi penguat legitimasi dan memudahkan publik memahami
-                  bahwa sosialisasi ini resmi.
-                </p>
-              </div>
-              <div className="rounded-[1.5rem] bg-[#fff8f0] p-4">
-                <p className="text-sm font-semibold text-[var(--foreground)]">
-                  Status file
-                </p>
-                <p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-                  Siap ditautkan ke PDF surat dukungan resmi begitu file
-                  disiapkan.
-                </p>
-              </div>
-            </div>
-          </article>
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {activeItems.map((item) => (
+            <SupportCard
+              key={item.title}
+              item={item}
+              kind={activeTab}
+            />
+          ))}
         </div>
       </div>
     </section>

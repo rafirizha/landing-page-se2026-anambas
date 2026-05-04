@@ -26,8 +26,41 @@ export const schedule = [
   },
 ];
 
-export const supportVideoUrl =
-  "https://www.youtube.com/results?search_query=Sensus+Ekonomi+2026+BPS+Kabupaten+Kepulauan+Anambas";
+export const supportVideos = [
+  {
+    title: "Bupati Kab. Kepulauan Anambas",
+    description: "Video dukungan dari Bupati Kabupaten Kepulauan Anambas.",
+    href: "https://youtu.be/atynNHuFRns",
+  },
+  {
+    title: "Wakil Bupati Kab. Kepulauan Anambas",
+    description: "Video dukungan dari Wakil Bupati Kabupaten Kepulauan Anambas.",
+    href: "https://youtu.be/iNxsxiAYLZk",
+  },
+  {
+    title: "Kepala BPS Kab. Kepulauan Anambas",
+    description: "Video dukungan dari Kepala BPS Kabupaten Kepulauan Anambas.",
+    href: "https://youtube.com",
+  },
+] as const;
+
+export const supportLetters = [
+  {
+    title: "Surat Edaran Menteri Dalam Negeri",
+    description: "Surat edaran resmi dari Menteri Dalam Negeri.",
+    href: "https://drive.google.com/file/d/14Eiw7kSp389mlXZ1-6zhBFGXV1EDCDWn/view?usp=drive_link",
+  },
+  {
+    title: "Surat Edaran Gubernur Kepulauan Riau",
+    description: "Surat edaran resmi dari Gubernur Kepulauan Riau.",
+    href: "https://drive.google.com/file/d/19y6D31igWkH1Hz-IAMTlxSC9n6viqaVK/view?usp=sharing",
+  },
+  {
+    title: "Surat Edaran Bupati Kab. Kepulauan Anambas",
+    description: "Surat edaran resmi dari Bupati Kabupaten Kepulauan Anambas.",
+    href: "https://drive.google.com/file/d/15oED35O7Edriv7KEhUkLbGa72RqbrSco/view?usp=drive_link",
+  },
+] as const;
 
 export const benefits = [
   {
