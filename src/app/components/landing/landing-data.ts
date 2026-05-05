@@ -31,11 +31,13 @@ export const supportVideos = [
     title: "Bupati Kab. Kepulauan Anambas",
     description: "Video dukungan dari Bupati Kabupaten Kepulauan Anambas.",
     href: "https://youtu.be/atynNHuFRns",
+    thumbnail: "/support-video-bupati.jpg",
   },
   {
     title: "Wakil Bupati Kab. Kepulauan Anambas",
     description: "Video dukungan dari Wakil Bupati Kabupaten Kepulauan Anambas.",
     href: "https://youtu.be/iNxsxiAYLZk",
+    thumbnail: "/support-video-wakil-bupati.jpg",
   },
   {
     title: "Kepala BPS Kab. Kepulauan Anambas",
@@ -47,18 +49,21 @@ export const supportVideos = [
 export const supportLetters = [
   {
     title: "Surat Edaran Menteri Dalam Negeri",
-    description: "Surat edaran resmi dari Menteri Dalam Negeri.",
+    description: "Nomor 500.2/3811/SJ tentang dukungan pelaksanaan Sensus Ekonomi 2026.",
     href: "https://drive.google.com/file/d/14Eiw7kSp389mlXZ1-6zhBFGXV1EDCDWn/view?usp=drive_link",
+    thumbnail: "/support-letter-kemendagri.jpg",
   },
   {
     title: "Surat Edaran Gubernur Kepulauan Riau",
-    description: "Surat edaran resmi dari Gubernur Kepulauan Riau.",
+    description: "Nomor B/500.14.2/11/BPPP-SET/2026 tentang dukungan pelaksanaan Sensus Ekonomi 2026.",
     href: "https://drive.google.com/file/d/19y6D31igWkH1Hz-IAMTlxSC9n6viqaVK/view?usp=sharing",
+    thumbnail: "/support-letter-gubernur-kepri.jpg",
   },
   {
     title: "Surat Edaran Bupati Kab. Kepulauan Anambas",
-    description: "Surat edaran resmi dari Bupati Kabupaten Kepulauan Anambas.",
+    description: "Nomor 10 Tahun 2026 tentang dukungan pelaksanaan Sensus Ekonomi 2026.",
     href: "https://drive.google.com/file/d/15oED35O7Edriv7KEhUkLbGa72RqbrSco/view?usp=drive_link",
+    thumbnail: "/support-letter-bupati-anambas.jpg",
   },
 ] as const;
 
@@ -77,11 +82,6 @@ export const benefits = [
     title: "Bantu Pemerintah Tentukan Kebijakan",
     description:
       "Hasil SE2026 menjadi dasar penyusunan kebijakan ekonomi yang lebih tepat sasaran dan berdampak.",
-  },
-  {
-    title: "Dukung dengan Terima Petugas",
-    description:
-      "Partisipasi masyarakat dengan menerima petugas membantu kelancaran pendataan dan kualitas data ekonomi.",
   },
 ];
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 import { supportLetters, supportVideos } from "./landing-data";
@@ -10,6 +11,7 @@ type SupportItem = {
   title: string;
   description: string;
   href?: string;
+  thumbnail?: string;
 };
 
 function PlayIcon() {
@@ -73,23 +75,41 @@ function SupportCard({
 }) {
   const content = (
     <>
-      <div
-        className={`relative overflow-hidden rounded-[1.5rem] p-5 text-white ${
-          kind === "video"
-            ? "bg-[linear-gradient(135deg,#111827_0%,#1f2937_55%,#e37f2a_100%)]"
-            : "bg-[linear-gradient(135deg,#e37f2a_0%,#f59e0b_100%)]"
-        }`}
-      >
+      <div className="relative min-h-[22rem] overflow-hidden rounded-[1.5rem] text-white sm:min-h-[23rem]">
+        {item.thumbnail ? (
+          <Image
+            src={item.thumbnail}
+            alt={`${item.title} thumbnail`}
+            fill
+            className="object-cover object-top"
+            sizes="(min-width: 1280px) 28rem, (min-width: 768px) 45vw, 100vw"
+          />
+        ) : (
+          <div
+            className={`absolute inset-0 ${
+              kind === "video"
+                ? "bg-[linear-gradient(135deg,#111827_0%,#1f2937_55%,#e37f2a_100%)]"
+                : "bg-[linear-gradient(135deg,#e37f2a_0%,#f59e0b_100%)]"
+            }`}
+          />
+        )}
+
         <div
-          className="absolute -left-10 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl"
-          aria-hidden
-        />
-        <div
-          className="absolute -bottom-10 right-0 h-44 w-44 rounded-full bg-black/10 blur-3xl"
+          className={`absolute inset-0 ${
+            kind === "video"
+              ? "bg-[linear-gradient(180deg,rgba(17,24,39,0.12)_0%,rgba(17,24,39,0.46)_72%,rgba(17,24,39,0.82)_100%)]"
+              : "bg-[linear-gradient(180deg,rgba(227,127,42,0.08)_0%,rgba(227,127,42,0.36)_70%,rgba(227,127,42,0.8)_100%)]"
+          }`}
           aria-hidden
         />
 
-        <div className="relative z-10 flex items-center justify-between gap-3">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/15 text-white shadow-[0_18px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm">
+            {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
+          </div>
+        </div>
+
+        <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-3 p-5">
           <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
             {kind === "video" ? "YouTube" : "PDF"}
           </span>
@@ -98,17 +118,11 @@ function SupportCard({
           </span>
         </div>
 
-        <div className="relative z-10 mt-8 flex items-center justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
-            {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
-          </div>
-        </div>
-
-        <div className="relative z-10 mt-8">
+        <div className="absolute inset-x-0 bottom-0 z-10 p-5">
           <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
             {item.title}
           </h3>
-          <p className="mt-2 text-sm leading-7 text-white/86 sm:text-base">
+          <p className="mt-2 text-sm leading-7 text-white/90 sm:text-base">
             {item.description}
           </p>
         </div>
