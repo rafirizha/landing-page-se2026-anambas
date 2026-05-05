@@ -4,7 +4,7 @@ export default function ManfaatSection() {
   return (
     <section
       id="manfaat"
-      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-white py-12 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:py-16"
+      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-white pt-20 pb-12 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:pt-28 lg:pb-16"
     >
       <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -44,28 +44,46 @@ export default function ManfaatSection() {
           <div className="mx-auto inline-flex rounded-full bg-[var(--brand)] px-5 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white shadow-[0_10px_24px_rgba(227,127,42,0.18)]">
             Penutup
           </div>
-          <div className="mx-auto mt-4 max-w-3xl rounded-[1.5rem] border border-[rgba(227,127,42,0.12)] bg-[#fffaf5] px-5 py-4 shadow-[0_12px_28px_rgba(17,24,39,0.03)] sm:px-6 sm:py-5">
-            <p className="text-base leading-8 text-[var(--muted)] sm:text-lg">
-              <span className="font-semibold text-[var(--foreground)]">
-                SE2026
-              </span>{" "}
-              menjadi langkah penting untuk menghadirkan data ekonomi yang lebih{" "}
-              <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
-                lengkap
-              </span>
-              ,{" "}
-              <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
-                akurat
-              </span>
-              , dan bermanfaat bagi pembangunan daerah.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-[var(--foreground)] sm:text-base">
-              Mari bantu kelancaran pendataan dengan{" "}
-              <span className="rounded-full bg-[rgba(227,127,42,0.12)] px-2 py-0.5 font-semibold text-[var(--brand)]">
-                menerima petugas SE2026
-              </span>{" "}
-              dan memberikan informasi yang benar serta lengkap.
-            </p>
+          <div className="mx-auto mt-4 flex max-w-3xl flex-col gap-4">
+            <div className="rounded-[1.5rem] border border-[rgba(227,127,42,0.12)] bg-[#fffaf5] px-5 py-4 shadow-[0_12px_28px_rgba(17,24,39,0.03)] sm:px-6 sm:py-5">
+              <p className="text-base leading-8 text-[var(--muted)] sm:text-lg">
+                <span className="font-semibold text-[var(--foreground)]">
+                  SE2026
+                </span>{" "}
+                menjadi langkah penting untuk menghadirkan data ekonomi yang
+                lebih{" "}
+                <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
+                  lengkap
+                </span>
+                ,{" "}
+                <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
+                  akurat
+                </span>
+                , dan bermanfaat bagi pembangunan daerah.
+              </p>
+            </div>
+
+            <div className="rounded-[1.5rem] border border-[rgba(227,127,42,0.12)] bg-[#fffaf5] px-5 py-4 shadow-[0_12px_28px_rgba(17,24,39,0.03)] sm:px-6 sm:py-5">
+              <div className="flex flex-col items-center gap-4 text-sm leading-7 text-[var(--foreground)] sm:text-base">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[rgba(227,127,42,0.16)] bg-[#fff3e4] text-[var(--brand)] shadow-[0_8px_18px_rgba(227,127,42,0.08)]">
+                  <span className="text-lg font-bold leading-none">!</span>
+                </span>
+                <p className="max-w-2xl">
+                  <span className="font-semibold text-[var(--foreground)]">
+                    Dukung kelancaran pendataan
+                  </span>{" "}
+                  dengan{" "}
+                  <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
+                    menerima petugas SE2026
+                  </span>{" "}
+                  dan memberikan{" "}
+                  <span className="rounded-full bg-[#fff0df] px-2 py-0.5 font-semibold text-[var(--brand)]">
+                    informasi yang benar serta lengkap
+                  </span>
+                  .
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

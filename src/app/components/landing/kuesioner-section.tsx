@@ -67,17 +67,12 @@ function QuestionCard({
   accent: string;
 }) {
   return (
-    <article className="group relative overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.08)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(227,127,42,0.18)] hover:shadow-[0_22px_60px_rgba(17,24,39,0.07)] sm:p-7">
-      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#ffb25c,#f6a623,#c96a14)]" />
-      <div
-        className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[rgba(227,127,42,0.08)] blur-2xl"
-        aria-hidden
-      />
+    <article className="group relative overflow-hidden rounded-[2rem] border border-[rgba(17,24,39,0.08)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(17,24,39,0.14)] hover:shadow-[0_22px_60px_rgba(17,24,39,0.07)] sm:p-7">
 
       <div className="flex items-start gap-4">
         <div className="flex min-w-0 flex-1 items-start gap-4">
           <div
-            className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] ring-1 ring-[rgba(255,255,255,0.55)] shadow-[0_18px_30px_rgba(227,127,42,0.18)] ${accent}`}
+            className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] ring-1 ring-[rgba(255,255,255,0.55)] shadow-[0_10px_18px_rgba(17,24,39,0.06)] ${accent}`}
           >
             {icon}
           </div>
@@ -99,7 +94,7 @@ function QuestionCard({
             key={item}
             className="flex items-start gap-3 rounded-2xl border border-[rgba(227,127,42,0.08)] bg-[#fffaf5] px-4 py-3 text-sm leading-7 text-[var(--foreground)] shadow-[0_8px_22px_rgba(17,24,39,0.025)] sm:text-base"
           >
-            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffb25c,#ea7a1f)] text-[0.7rem] font-semibold text-white">
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#fff0df] text-[0.7rem] font-semibold text-[var(--brand)]">
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="pt-0.5">{item}</span>
