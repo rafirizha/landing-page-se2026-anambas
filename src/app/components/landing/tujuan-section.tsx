@@ -7,6 +7,7 @@ type GoalCardProps = {
   title: string;
   details: readonly string[];
   icon: ReactNode;
+  variant?: "default" | "asta";
 };
 
 type CoverageCardProps = {
@@ -17,7 +18,8 @@ type CoverageCardProps = {
 
 const goals = [
   {
-    accent: "bg-[#fff0df] text-[var(--brand)]",
+    accent:
+      "bg-gradient-to-br from-[#ffb25c] via-[#ff9c2f] to-[#ea7a1f] text-white shadow-[0_14px_28px_rgba(234,122,31,0.22)]",
     eyebrow: "Tujuan 1",
     title: "Produktivitas Sektor Ekonomi",
     details: [
@@ -28,7 +30,8 @@ const goals = [
     icon: <ProductivityIcon />,
   },
   {
-    accent: "bg-[#fff3e6] text-[var(--brand)]",
+    accent:
+      "bg-gradient-to-br from-[#ff9b67] via-[#f97c2f] to-[#d45d1c] text-white shadow-[0_14px_28px_rgba(244,121,47,0.2)]",
     eyebrow: "Tujuan 2",
     title: "Sensus Ekonomi Membantu Dunia Usaha",
     details: [
@@ -39,15 +42,17 @@ const goals = [
     icon: <BusinessIcon />,
   },
   {
-    accent: "bg-[#fff7e8] text-[var(--brand)]",
+    accent:
+      "bg-gradient-to-br from-[#ffd56a] via-[#f6a623] to-[#c96a14] text-white shadow-[0_14px_28px_rgba(246,166,35,0.2)]",
     eyebrow: "Tujuan 3",
     title: "Mendukung Asta Cita",
     details: [
-      "Asta Cita Ke-2: Mendorong kemandirian pangan, energi, serta ekonomi kreatif, hijau, dan biru.",
-      "Asta Cita Ke-3: Membuka lapangan kerja berkualitas dan mendukung kewirausahaan.",
-      "Asta Cita Ke-6: Membangun dari daerah untuk pemerataan ekonomi dan pengentasan kemiskinan.",
+      "Kemandirian pangan, energi, serta ekonomi kreatif, hijau, dan biru.",
+      "Lapangan kerja berkualitas dan kewirausahaan.",
+      "Pemerataan ekonomi serta pengentasan kemiskinan.",
     ],
     icon: <AstaIcon />,
+    variant: "asta",
   },
 ] as const;
 
@@ -69,12 +74,15 @@ const coverageCards = [
   },
 ] as const;
 
-function GoalCard({ accent, eyebrow, title, details, icon }: GoalCardProps) {
+function GoalCard({ accent, eyebrow, title, details, icon, variant = "default" }: GoalCardProps) {
+  const pointShellClass =
+    "flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#fff3e6] text-[var(--brand)] ring-1 ring-[rgba(227,127,42,0.12)]";
+
   return (
-    <article className="group flex h-full flex-col rounded-[2.1rem] border border-[rgba(227,127,42,0.12)] bg-white/82 p-5 shadow-[0_18px_50px_rgba(17,24,39,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white/94 sm:p-6">
+    <article className="group flex h-full flex-col rounded-[2.1rem] border border-[rgba(227,127,42,0.12)] bg-white/82 p-5 shadow-[0_18px_50px_rgba(17,24,39,0.05)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/94 hover:shadow-[0_20px_60px_rgba(227,127,42,0.15)] hover:border-[rgba(227,127,42,0.3)] sm:p-6">
       <div className="flex items-center gap-3">
         <div
-          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 ring-[rgba(227,127,42,0.12)] ${accent}`}
+          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ring-1 ring-white/35 transition-transform duration-300 group-hover:scale-110 ${accent}`}
         >
           {icon}
         </div>
@@ -89,28 +97,90 @@ function GoalCard({ accent, eyebrow, title, details, icon }: GoalCardProps) {
         </div>
       </div>
 
-      <div className="mt-5 grid gap-2.5">
-        {details.map((item) => (
-          <div
-            key={item}
-            className="flex items-start gap-3 px-1 py-1 text-sm leading-7 text-[var(--foreground)]"
-          >
-            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--brand)]" />
-            <span className="flex-1">{item}</span>
-          </div>
-        ))}
-      </div>
+      {variant === "asta" ? (
+        <div className="mt-5 grid gap-3">
+          {details.map((item, index) => (
+            <div
+              key={item}
+              className="flex items-start gap-3 rounded-[1.35rem] border border-[rgba(227,127,42,0.08)] bg-white px-4 py-3 text-sm leading-6 text-[var(--foreground)] shadow-[0_8px_22px_rgba(17,24,39,0.03)]"
+            >
+              <div className={pointShellClass}>
+                {index === 0 ? <AstaLeafIcon /> : index === 1 ? <BriefcaseIcon /> : <LocationIcon />}
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <p className="font-semibold text-[var(--foreground)]">
+                  {index === 0
+                    ? "Asta Cita Ke-2"
+                    : index === 1
+                      ? "Asta Cita Ke-3"
+                      : "Asta Cita Ke-6"}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                  {item}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-5 grid gap-3">
+          {details.map((item) => (
+            <div
+              key={item}
+              className="flex items-start gap-3 rounded-[1.35rem] border border-[rgba(227,127,42,0.08)] bg-white px-4 py-3 text-sm leading-6 text-[var(--foreground)] shadow-[0_8px_22px_rgba(17,24,39,0.03)]"
+            >
+              <div className={pointShellClass}>
+                {title === "Produktivitas Sektor Ekonomi" ? (
+                  item === details[0] ? (
+                    <ChartIcon />
+                  ) : item === details[1] ? (
+                    <CommunityIcon />
+                  ) : (
+                    <LeafIcon />
+                  )
+                ) : item === details[0] ? (
+                  <SearchIcon />
+                ) : item === details[1] ? (
+                  <TargetIcon />
+                ) : (
+                  <GrowthIcon />
+                )}
+              </div>
+
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-semibold text-[var(--foreground)]">
+                  {title === "Produktivitas Sektor Ekonomi"
+                    ? item === details[0]
+                      ? "Peta Perekonomian"
+                      : item === details[1]
+                        ? "Kontribusi UMKM"
+                        : "Ekonomi Digital & Lingkungan"
+                    : item === details[0]
+                      ? "Informasi Pasar"
+                      : item === details[1]
+                        ? "Perencanaan Bisnis"
+                        : "Investasi & Daya Saing"}
+                </p>
+                <p className="mt-1 text-sm leading-6 text-[var(--muted)]">
+                  {item}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
 
 function CoverageCard({ title, description, icon }: CoverageCardProps) {
   return (
-    <article className="flex h-full items-center gap-4 rounded-[1.7rem] border border-[rgba(227,127,42,0.12)] bg-white p-5 shadow-[0_14px_36px_rgba(17,24,39,0.04)]">
-      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-[var(--brand)] ring-1 ring-[rgba(227,127,42,0.1)]">
+    <article className="group flex h-full items-center gap-4 rounded-[1.7rem] border border-[rgba(227,127,42,0.12)] bg-white p-5 shadow-[0_14px_36px_rgba(17,24,39,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(227,127,42,0.12)] hover:border-[rgba(227,127,42,0.2)]">
+      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-[var(--brand)] ring-1 ring-[rgba(227,127,42,0.1)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-[var(--brand)] group-hover:text-white">
         {icon}
       </div>
-      <div>
+      <div className="flex-1 text-center sm:text-left">
         <h3 className="text-base font-semibold text-[var(--foreground)]">
           {title}
         </h3>
@@ -182,6 +252,186 @@ function AstaIcon() {
   );
 }
 
+function AstaLeafIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 18c8.5 0 14-5 14-13-8 0-13 5-13 13v0Z"
+      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 15c1.5-1.5 4-4 8-6" />
+    </svg>
+  );
+}
+
+function BriefcaseIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 6.5V5.25A1.25 1.25 0 0 1 10.25 4h3.5A1.25 1.25 0 0 1 15 5.25V6.5"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.5 8.5h15A1.5 1.5 0 0 1 21 10v8.25A1.75 1.75 0 0 1 19.25 20H4.75A1.75 1.75 0 0 1 3 18.25V10a1.5 1.5 0 0 1 1.5-1.5Z"
+      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12.5h18" />
+    </svg>
+  );
+}
+
+function LocationIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 21s6-4.35 6-10A6 6 0 0 0 6 11c0 5.65 6 10 6 10Z"
+      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 11.5a1.5 1.5 0 1 0 0-.01" />
+    </svg>
+  );
+}
+
+function ChartIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path d="M4 19V5m0 14h16" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="7" y="12.5" width="2.5" height="4.5" rx="1" fill="currentColor" opacity="0.25" />
+      <rect x="11" y="9.5" width="2.5" height="7.5" rx="1" fill="currentColor" opacity="0.35" />
+      <rect x="15" y="6.5" width="2.5" height="10.5" rx="1" fill="currentColor" opacity="0.45" />
+    </svg>
+  );
+}
+
+function CommunityIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <circle cx="8" cy="9" r="2.3" fill="currentColor" opacity="0.2" />
+      <circle cx="16" cy="9" r="2.3" fill="currentColor" opacity="0.2" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19c.6-2.8 2.6-4.2 3.5-4.2s2.9 1.4 3.5 4.2" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12.5 19c.5-2.4 2.2-3.7 3.5-3.7s3 1.3 3.5 3.7" />
+    </svg>
+  );
+}
+
+function LeafIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 18c8.5 0 14-5 14-13-8 0-13 5-13 13v0Z"
+      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8 15c1.5-1.5 4-4 8-6" />
+    </svg>
+  );
+}
+
+function SearchIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <circle cx="11" cy="11" r="5.5" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m15.2 15.2 3.8 3.8" />
+    </svg>
+  );
+}
+
+function TargetIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="7.5" />
+      <circle cx="12" cy="12" r="3.5" fill="currentColor" opacity="0.2" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v3M19.5 12h-3M12 16.5v3M4.5 12h3" />
+    </svg>
+  );
+}
+
+function GrowthIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      className="h-5 w-5"
+      aria-hidden
+    >
+      <path d="M4 19V5m0 14h16" strokeLinecap="round" strokeLinejoin="round" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="m6.5 14.5 4-4 3 3 4.8-5.8" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17 7.5h1.8V9.3" />
+    </svg>
+  );
+}
+
 function HouseIcon() {
   return (
     <svg
@@ -242,7 +492,7 @@ export default function TujuanSection() {
       id="tujuan"
       className="relative left-1/2 -mt-1 flex w-[100vw] -translate-x-1/2 overflow-hidden bg-[#fdf3ea] py-14 lg:-mt-2 lg:min-h-[560px] lg:items-start lg:py-16"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="relative z-10 mx-auto max-w-5xl text-center">
           <div className="inline-flex rounded-full bg-[var(--brand)] px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.36em] text-white shadow-[0_14px_30px_rgba(227,127,42,0.2)] sm:text-base">
             Tujuan
@@ -258,6 +508,7 @@ export default function TujuanSection() {
               title={goal.title}
               details={goal.details}
               icon={goal.icon}
+              variant={goal.title === "Mendukung Asta Cita" ? "asta" : "default"}
             />
           ))}
         </div>

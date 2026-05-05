@@ -58,7 +58,7 @@ function TimelineIcon({ index }: { index: number }) {
 export default function PelaksanaanSection() {
   return (
     <section id="pelaksanaan" className="pb-16 pt-4 lg:pb-24 lg:pt-8">
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-12">
+      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex rounded-full bg-[var(--brand)] px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.36em] text-white shadow-[0_14px_30px_rgba(227,127,42,0.2)] sm:text-base">
             Pelaksanaan
@@ -70,12 +70,12 @@ export default function PelaksanaanSection() {
         </div>
 
         <div className="relative z-10 mt-10 grid items-stretch gap-6 lg:grid-cols-2">
-          <div className="h-full rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,247,239,0.92))] p-6 shadow-[0_18px_50px_rgba(17,24,39,0.04)] sm:p-8">
+          <div className="flex h-full flex-col rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,247,239,0.92))] p-6 shadow-[0_18px_50px_rgba(17,24,39,0.04)] sm:p-8">
             <p className="text-center text-base font-semibold uppercase tracking-[0.28em] text-[var(--brand)] sm:text-lg">
               Timeline pelaksanaan
             </p>
 
-            <div className="mt-7 space-y-5">
+            <div className="mt-6 flex flex-1 flex-col justify-center gap-5">
               {schedule.map((item, index) => (
                 <div key={item.phase} className="flex gap-4">
                   <div className="flex flex-col items-center pt-1">

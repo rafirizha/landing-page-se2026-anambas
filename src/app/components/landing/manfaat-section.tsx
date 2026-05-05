@@ -4,11 +4,9 @@ export default function ManfaatSection() {
   return (
     <section
       id="manfaat"
-      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#fdf3ea] py-12 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:py-16"
+      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-white py-12 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:py-16"
     >
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-14 bg-[linear-gradient(180deg,rgba(243,152,52,0.05),rgba(253,243,234,0))]" />
-
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex rounded-full bg-[linear-gradient(135deg,#f29632,#e57f25)] px-8 py-3 text-sm font-semibold uppercase tracking-[0.38em] text-white shadow-[0_18px_40px_rgba(227,127,42,0.22)] sm:px-10 sm:py-3.5 sm:text-base">
             Manfaat
@@ -23,10 +21,10 @@ export default function ManfaatSection() {
           {benefits.map((item, index) => (
             <article
               key={item.title}
-              className="rounded-[1.8rem] border border-[rgba(227,127,42,0.08)] bg-white p-6 shadow-[0_14px_36px_rgba(17,24,39,0.04)]"
+              className="group rounded-[1.8rem] border border-[rgba(227,127,42,0.08)] bg-white p-6 shadow-[0_14px_36px_rgba(17,24,39,0.04)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(227,127,42,0.12)] hover:border-[rgba(227,127,42,0.2)]"
             >
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-lg font-bold text-[var(--brand)]">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-lg font-bold text-[var(--brand)] transition-transform duration-300 group-hover:scale-110 group-hover:bg-[var(--brand)] group-hover:text-white">
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <div>

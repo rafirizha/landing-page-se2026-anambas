@@ -70,7 +70,7 @@ export default function DasarHukumSection() {
       id="dasar-hukum"
       className="relative left-1/2 w-[100vw] -translate-x-1/2 overflow-hidden bg-white py-16 lg:py-24"
     >
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex rounded-full bg-[var(--brand)] px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.36em] text-white shadow-[0_10px_30px_rgba(227,127,42,0.18)] sm:text-base">
             Dasar Hukum

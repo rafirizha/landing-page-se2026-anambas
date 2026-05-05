@@ -102,9 +102,9 @@ function YoutubeIcon() {
 
 export default function SiteFooter() {
   return (
-    <footer className="-mt-px bg-white">
-      <div className="relative mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-8 rounded-[2rem] border border-[rgba(17,24,39,0.08)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.035)] md:flex-row md:items-start md:justify-between md:gap-10 sm:p-8">
+    <footer className="relative -mt-px bg-[#fdf3ea]">
+      <div className="relative mx-auto w-full max-w-[90rem] px-4 py-10 sm:px-6 lg:px-8 xl:px-10">
+        <div className="flex flex-col gap-8 rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.035)] md:flex-row md:items-start md:justify-between md:gap-10 sm:p-8">
           <div className="max-w-md">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[var(--brand)]">
               Kontak Resmi
@@ -118,7 +118,7 @@ export default function SiteFooter() {
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:min-w-[36rem]">
+          <div className="grid w-full gap-3 sm:grid-cols-2 lg:min-w-[36rem]">
             {socialLinks.map((item) => {
               const Icon = item.icon;
 
@@ -128,16 +128,16 @@ export default function SiteFooter() {
                   href={item.href}
                   target={item.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                  className="group flex items-center gap-4 rounded-[1.35rem] border border-[rgba(17,24,39,0.08)] bg-white px-4 py-3 text-left transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(17,24,39,0.05)]"
+                className="group flex w-full items-start gap-4 rounded-[1.35rem] border border-[rgba(227,127,42,0.12)] bg-white px-4 py-3 text-left transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(17,24,39,0.05)] sm:items-center"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#f7f7f7] text-[var(--brand)]">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#fff0df] text-[var(--brand)]">
                     <Icon />
                   </span>
-                  <span className="min-w-0">
+                  <span className="min-w-0 flex-1">
                     <span className="block text-xs font-semibold uppercase tracking-[0.22em] text-[var(--brand)]">
                       {item.label}
                     </span>
-                    <span className="mt-1 block truncate text-sm font-medium text-[var(--foreground)]">
+                    <span className="mt-1 block break-words text-sm font-medium leading-5 text-[var(--foreground)]">
                       {item.value}
                     </span>
                   </span>

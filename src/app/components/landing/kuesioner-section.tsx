@@ -67,29 +67,42 @@ function QuestionCard({
   accent: string;
 }) {
   return (
-    <article className="rounded-[2rem] border border-[var(--border)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.05)] sm:p-7">
-      <div className="flex items-center gap-4">
-        <div
-          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ring-1 ring-[rgba(227,127,42,0.12)] ${accent}`}
-        >
-          {icon}
-        </div>
-        <div>
-          <h3 className="text-xl font-semibold tracking-tight text-[var(--foreground)]">
-            {title}
-          </h3>
-          <p className="mt-1 text-sm text-[var(--muted)]">{subtitle}</p>
+    <article className="group relative overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.08)] bg-white p-6 shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-[rgba(227,127,42,0.18)] hover:shadow-[0_22px_60px_rgba(17,24,39,0.07)] sm:p-7">
+      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#ffb25c,#f6a623,#c96a14)]" />
+      <div
+        className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[rgba(227,127,42,0.08)] blur-2xl"
+        aria-hidden
+      />
+
+      <div className="flex items-start gap-4">
+        <div className="flex min-w-0 flex-1 items-start gap-4">
+          <div
+            className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.35rem] ring-1 ring-[rgba(255,255,255,0.55)] shadow-[0_18px_30px_rgba(227,127,42,0.18)] ${accent}`}
+          >
+            {icon}
+          </div>
+
+          <div className="min-w-0">
+            <div className="inline-flex rounded-full bg-[#fff5eb] px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">
+              {subtitle}
+            </div>
+            <h3 className="mt-3 max-w-[11.5rem] text-[1.05rem] font-bold leading-tight tracking-tight text-[var(--foreground)] sm:max-w-none sm:text-[1.2rem]">
+              {title}
+            </h3>
+          </div>
         </div>
       </div>
 
-      <ul className="mt-6 space-y-3">
-        {points.map((item) => (
+      <ul className="mt-6 grid gap-3">
+        {points.map((item, index) => (
           <li
             key={item}
-            className="flex items-start gap-3 px-1 py-1 text-sm leading-7 text-[var(--foreground)] sm:text-base"
+            className="flex items-start gap-3 rounded-2xl border border-[rgba(227,127,42,0.08)] bg-[#fffaf5] px-4 py-3 text-sm leading-7 text-[var(--foreground)] shadow-[0_8px_22px_rgba(17,24,39,0.025)] sm:text-base"
           >
-            <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[var(--brand)]" />
-            <span>{item}</span>
+            <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(135deg,#ffb25c,#ea7a1f)] text-[0.7rem] font-semibold text-white">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="pt-0.5">{item}</span>
           </li>
         ))}
       </ul>
@@ -103,19 +116,19 @@ export default function KuesionerSection() {
       id="kuesioner"
       className="relative left-1/2 w-[100vw] -translate-x-1/2 overflow-hidden bg-[#fdf3ea] pt-16 pb-16 lg:pt-24 lg:pb-24"
     >
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex rounded-full bg-[var(--brand)] px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.36em] text-white shadow-[0_10px_30px_rgba(227,127,42,0.18)] sm:text-base">
             Jenis Kuesioner
           </div>
           <div className="mx-auto mt-5 max-w-4xl rounded-[1.8rem] border border-[var(--border)] bg-[#fbfbfb] px-5 py-4 text-sm leading-8 text-[var(--muted)] shadow-[0_10px_30px_rgba(17,24,39,0.03)] sm:px-6 sm:py-5 sm:text-base">
-            <span className="text-[var(--foreground)]">
+            <span>
               Kuesioner SE2026 dibagi menjadi{" "}
-              <span className="font-semibold">
+              <span className="font-semibold text-[var(--brand)]">
                 rumah tangga untuk seluruh keluarga
               </span>{" "}
               dan{" "}
-              <span className="font-semibold">
+              <span className="font-semibold text-[var(--brand)]">
                 usaha untuk pelaku usaha dari skala kecil hingga besar
               </span>
               , agar pendataan lebih tepat sasaran.
@@ -128,7 +141,7 @@ export default function KuesionerSection() {
             title="Kuesioner Rumah Tangga"
             subtitle="Pendekatan keluarga"
             icon={<HouseholdIcon />}
-            accent="bg-[#fff0df] text-[var(--brand)]"
+            accent="bg-gradient-to-br from-[#ffb25c] via-[#ff9c2f] to-[#ea7a1f] text-white shadow-[0_14px_28px_rgba(234,122,31,0.22)]"
             points={householdPoints}
           />
 
@@ -136,7 +149,7 @@ export default function KuesionerSection() {
             title="Kuesioner Usaha"
             subtitle="Pendekatan pelaku usaha"
             icon={<BusinessIcon />}
-            accent="bg-[#fff3e6] text-[var(--brand)]"
+            accent="bg-gradient-to-br from-[#ffd56a] via-[#f6a623] to-[#c96a14] text-white shadow-[0_14px_28px_rgba(246,166,35,0.2)]"
             points={businessPoints}
           />
         </div>

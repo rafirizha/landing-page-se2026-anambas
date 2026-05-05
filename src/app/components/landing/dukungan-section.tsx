@@ -148,19 +148,15 @@ export default function DukunganSection() {
   return (
     <section
       id="dukungan"
-      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-white py-16 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:py-24"
+      className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-[#fdf3ea] py-16 shadow-[inset_0_1px_0_rgba(227,127,42,0.06)] lg:py-24"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-8 xl:px-10">
         <div className="mx-auto max-w-4xl text-center">
           <div className="inline-flex rounded-full bg-[var(--brand)] px-6 py-2.5 text-sm font-semibold uppercase tracking-[0.36em] text-white shadow-[0_14px_30px_rgba(227,127,42,0.2)] sm:text-base">
             Dukungan
           </div>
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--foreground)] sm:text-4xl">
-            Video dukungan dan surat edaran
-          </h2>
           <p className="mx-auto mt-4 max-w-3xl text-sm leading-7 text-[var(--muted)] sm:text-base">
-            Navigasi dipisah agar 3 video dan 3 surat edaran tetap rapi,
-            mudah dipindahkan, dan enak dibuka dari HP maupun desktop.
+            Video Dukungan dan Surat Edaran untuk memperkuat dasar pelaksanaan Sensus Ekonomi 2026
           </p>
         </div>
 
