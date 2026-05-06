@@ -75,13 +75,13 @@ function SupportCard({
 }) {
   const content = (
     <>
-      <div className="relative min-h-[22rem] overflow-hidden rounded-[1.5rem] text-white sm:min-h-[23rem]">
+      <div className="relative min-h-[18rem] overflow-hidden rounded-[1.55rem] bg-[#fff8f0] sm:min-h-[19rem]">
         {item.thumbnail ? (
           <Image
             src={item.thumbnail}
             alt={`${item.title} thumbnail`}
             fill
-            className="object-cover object-top"
+            className="object-cover object-center"
             sizes="(min-width: 1280px) 28rem, (min-width: 768px) 45vw, 100vw"
           />
         ) : (
@@ -97,44 +97,51 @@ function SupportCard({
         <div
           className={`absolute inset-0 ${
             kind === "video"
-              ? "bg-[linear-gradient(180deg,rgba(17,24,39,0.12)_0%,rgba(17,24,39,0.46)_72%,rgba(17,24,39,0.82)_100%)]"
-              : "bg-[linear-gradient(180deg,rgba(227,127,42,0.08)_0%,rgba(227,127,42,0.36)_70%,rgba(227,127,42,0.8)_100%)]"
+              ? "bg-[linear-gradient(180deg,rgba(17,24,39,0.08)_0%,rgba(17,24,39,0.22)_54%,rgba(17,24,39,0.58)_100%)]"
+              : "bg-[linear-gradient(180deg,rgba(255,255,255,0.12)_0%,rgba(227,127,42,0.08)_42%,rgba(227,127,42,0.28)_100%)]"
           }`}
           aria-hidden
         />
 
-        <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/15 text-white shadow-[0_18px_50px_rgba(0,0,0,0.2)] backdrop-blur-sm">
-            {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
-          </div>
-        </div>
-
-        <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-3 p-5">
-          <span className="inline-flex rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.28em]">
+        <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between gap-3 p-4">
+          <span className="inline-flex rounded-full border border-white/25 bg-white/18 px-3 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.28em] text-white backdrop-blur-sm">
             {kind === "video" ? "YouTube" : "PDF"}
           </span>
-          <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium">
+          <span className="rounded-full border border-white/20 bg-white/18 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
             {kind === "video" ? "Klik thumbnail" : "Buka dokumen"}
           </span>
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 z-10 p-5">
-          <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+            {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
+          </div>
+        </div>
+
+        <div className="absolute inset-x-0 bottom-0 z-10 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(227,127,42,0.28)_100%)]" />
+      </div>
+
+      <div className="flex flex-1 flex-col gap-4 px-5 py-5 sm:px-6 sm:py-6">
+        <div>
+          <div className="inline-flex rounded-full bg-[#fff5eb] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-[var(--brand)]">
+            {kind === "video" ? "Video Dukungan" : "Surat Edaran"}
+          </div>
+          <h3 className="mt-3 text-[1.05rem] font-bold leading-tight tracking-tight text-[var(--foreground)] sm:text-[1.18rem]">
             {item.title}
           </h3>
-          <p className="mt-2 text-sm leading-7 text-white/90 sm:text-base">
+          <p className="mt-2 text-sm leading-7 text-[var(--muted)] sm:text-base">
             {item.description}
           </p>
         </div>
-      </div>
 
-      <div className="flex items-center justify-between gap-3 border-t border-[rgba(227,127,42,0.1)] px-5 py-4 text-sm">
-        <span className="text-[var(--muted)]">
-          {item.href ? "Tersedia untuk dibuka" : "Tautan belum diisi"}
-        </span>
-        <span className="inline-flex items-center gap-1 font-semibold text-[var(--brand)]">
-          {kind === "video" ? "Buka video" : "Buka PDF"} <ArrowIcon />
-        </span>
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-[rgba(227,127,42,0.08)] pt-4 text-sm">
+          <span className="text-[var(--muted)]">
+            {item.href ? "Tersedia untuk dibuka" : "Tautan belum diisi"}
+          </span>
+          <span className="inline-flex items-center gap-1 font-semibold text-[var(--brand)]">
+            {kind === "video" ? "Buka video" : "Buka PDF"} <ArrowIcon />
+          </span>
+        </div>
       </div>
     </>
   );
@@ -145,14 +152,18 @@ function SupportCard({
         href={item.href}
         target="_blank"
         rel="noreferrer"
-        className="group block overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.05)] transition hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,24,39,0.08)]"
+        className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.08)] bg-white shadow-[0_18px_44px_rgba(17,24,39,0.04)] transition hover:-translate-y-1 hover:shadow-[0_22px_60px_rgba(17,24,39,0.07)]"
       >
         {content}
       </a>
     );
   }
 
-  return <article className="overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.12)] bg-white shadow-[0_18px_50px_rgba(17,24,39,0.05)]">{content}</article>;
+  return (
+    <article className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[rgba(227,127,42,0.08)] bg-white shadow-[0_18px_44px_rgba(17,24,39,0.04)]">
+      {content}
+    </article>
+  );
 }
 
 export default function DukunganSection() {
@@ -174,7 +185,7 @@ export default function DukunganSection() {
           </p>
         </div>
 
-        <div className="mx-auto mt-10 flex w-full max-w-2xl gap-3 rounded-full bg-[#f8f4ef] p-2 shadow-[inset_0_1px_0_rgba(17,24,39,0.03)]">
+        <div className="mx-auto mt-10 flex w-full max-w-2xl gap-3 rounded-full border border-[rgba(227,127,42,0.08)] bg-white p-2 shadow-[0_10px_30px_rgba(17,24,39,0.03)]">
           {(
             [
               { key: "video", label: "Video Dukungan", count: supportVideos.length },
@@ -188,7 +199,7 @@ export default function DukunganSection() {
               className={`flex-1 rounded-full px-4 py-3 text-sm font-semibold transition sm:text-base ${
                 activeTab === tab.key
                   ? "bg-[var(--brand)] text-white shadow-[0_10px_24px_rgba(227,127,42,0.2)]"
-                  : "text-[var(--foreground)] hover:bg-white/80"
+                  : "text-[var(--foreground)] hover:bg-[#fff7ef]"
               }`}
             >
               <span className="block">{tab.label}</span>
