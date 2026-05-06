@@ -8,14 +8,12 @@ export default function HeroShowcase() {
           src="/kota-tarempa-anambaskab.png"
           alt=""
           fill
-          className="object-cover object-center opacity-[1]"
+          className="object-cover object-center"
           sizes="50vw"
           aria-hidden
           unoptimized
         />
       </div>
-
-      <div className="absolute inset-0 bg-white/88" aria-hidden />
     </div>
   );
 }

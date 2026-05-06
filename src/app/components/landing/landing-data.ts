@@ -32,12 +32,14 @@ export const supportVideos = [
     description: "Video dukungan dari Bupati Kabupaten Kepulauan Anambas.",
     href: "https://youtu.be/atynNHuFRns",
     thumbnail: "/support-video-bupati.jpg",
+    thumbnailPosition: "50% -18%",
   },
   {
     title: "Wakil Bupati Kab. Kepulauan Anambas",
     description: "Video dukungan dari Wakil Bupati Kabupaten Kepulauan Anambas.",
     href: "https://youtu.be/iNxsxiAYLZk",
     thumbnail: "/support-video-wakil-bupati.jpg",
+    thumbnailPosition: "50% -16%",
   },
   {
     title: "Kepala BPS Kab. Kepulauan Anambas",

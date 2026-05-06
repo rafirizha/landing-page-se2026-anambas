@@ -12,6 +12,7 @@ type SupportItem = {
   description: string;
   href?: string;
   thumbnail?: string;
+  thumbnailPosition?: string;
 };
 
 function PlayIcon() {
@@ -82,6 +83,11 @@ function SupportCard({
             alt={`${item.title} thumbnail`}
             fill
             className="object-cover object-center"
+            style={
+              item.thumbnailPosition
+                ? { objectPosition: item.thumbnailPosition }
+                : undefined
+            }
             sizes="(min-width: 1280px) 28rem, (min-width: 768px) 45vw, 100vw"
           />
         ) : (
@@ -113,7 +119,7 @@ function SupportCard({
         </div>
 
         <div className="absolute inset-0 z-10 flex items-center justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/30 bg-white/20 text-white shadow-[0_18px_50px_rgba(0,0,0,0.18)] backdrop-blur-sm">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/16 text-white shadow-[0_8px_20px_rgba(0,0,0,0.12)] backdrop-blur-[2px] sm:h-14 sm:w-14">
             {kind === "video" ? <PlayIcon /> : <DocumentIcon />}
           </div>
         </div>
